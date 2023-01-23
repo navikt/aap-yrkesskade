@@ -1,0 +1,41 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: yrkesskade
+  namespace: aap
+  labels:
+    team: aap
+  annotations:
+    github.url: "https://github.com/navikt/aap-bigquery"
+spec:
+  image: {{image}}
+  replicas:
+    cpuThresholdPercentage: 90
+    disableAutoScaling: true
+    max: 1
+    min: 1
+  kafka:
+    pool: {{kafka.pool}}
+    streams: true
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  liveness:
+    path: /actuator/live
+    initialDelay: 1
+    periodSeconds: 1
+    failureThreshold: 60
+  readiness:
+    path: /actuator/ready
+    initialDelay: 1
+    periodSeconds: 1
+    failureThreshold: 60
+  prometheus:
+    enabled: true
+    path: /actuator/metrics
+  secureLogs:
+    enabled: true
