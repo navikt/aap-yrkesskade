@@ -47,6 +47,7 @@ internal fun topology(): Topology {
             value?.response == null
         }
         .mapValues("lag-yrkesskade-response") { yrkesskade ->
+            // TODO sett opp rest-kall mot yrkesskade
             YrkesskadeKafkaDto(
                 response = YrkesskadeKafkaDto.Response(listOf(YrkesskadeKafkaDto.Response.Yrkesskade(LocalDate.now())))
             )
