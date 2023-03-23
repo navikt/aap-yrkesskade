@@ -36,7 +36,7 @@ fun Application.server(kafka: Streams = KafkaStreams()) {
 
     routing {
         actuators(prometheus, kafka)
-        route("/test") {
+        route("/test/{personident}") {
             get {
                 val personident = requireNotNull(call.parameters["personident"])
                 kafka.createProducer(config.kafka, Topics.yrkesskade).use {
