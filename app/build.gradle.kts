@@ -10,7 +10,7 @@ application {
     mainClass.set("yrkesskade.AppKt")
 }
 
-val aapLibsVersion = "3.7.42"
+val aapLibsVersion = "3.7.44"
 val ktorVersion = "2.3.0"
 
 dependencies {
