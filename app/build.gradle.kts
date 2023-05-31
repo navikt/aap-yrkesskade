@@ -11,7 +11,7 @@ application {
 }
 
 val aapLibsVersion = "3.7.44"
-val ktorVersion = "2.3.0"
+val ktorVersion = "2.3.1"
 
 dependencies {
     //implementation("com.github.navikt.aap-vedtak:kafka-dto:1.1.32")
